@@ -13,7 +13,7 @@ object Main extends App with LazyLogging {
   implicit val system: ActorSystem[Nothing] = ActorSystem(Behaviors.empty, "yetanothermanga-system")
   implicit val ec: ExecutionContext = system.executionContext
 
-  Http().newServerAt("localhost", 8080).bind(Routes.routes).onComplete {
+  Http().newServerAt("0.0.0.0", 8080).bind(Routes.routes).onComplete {
     case Failure(_) =>
       system.terminate()
       logger.error("Failed to start the server...")

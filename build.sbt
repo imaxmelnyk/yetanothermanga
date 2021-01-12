@@ -5,5 +5,6 @@ scalaVersion := "2.13.4"
 
 libraryDependencies ++= Dependencies.defaultDependencies
 
-test in assembly := {}
-assemblyJarName in assembly := s"${name.value}_${version.value}.jar"
+// Dockerizing
+enablePlugins(JavaAppPackaging, DockerPlugin)
+dockerBaseImage := "openjdk:11-jre-buster"
